@@ -25,46 +25,47 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="card card-primary">
+                    <div class="card card-warning">
                         <div class="card-header">
-                            <h3 class="card-title">Form Anggota</h3>
+                            <h3 class="card-title">Update Data Anggota</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{ route('anggota.store')}}" method="post">
+                        <form action="{{route('anggota.update', $anggota[0]->id)}}" method="POST">
                             @csrf
+                            @method('PUT')
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="id">ID Anggota</label>
-                                    <input type="text" class="form-control" name="id" id="id" placeholder="Masukkan ID">
+                                    <input disabled type="text" class="form-control" name="id" id="id" placeholder="Masukkan ID" value="{{$anggota[0]->id}}">
                                 </div>
                                 <div class="form-group">
                                     <label for="kode_anggota">Kode Anggota</label>
-                                    <input type="text" class="form-control" name="kode" id="kode_anggota" placeholder="Masukan kode">
+                                    <input value="{{$anggota[0]->kode}}" type="text" class="form-control" name="kode" id="kode_anggota" placeholder="Masukan kode">
                                 </div>
                                 <div class="form-group">
                                     <label for="nama">Nama</label>
-                                    <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukan nama">
+                                    <input value="{{$anggota[0]->nama}}" type="text" class="form-control" name="nama" id="nama" placeholder="Masukan nama">
                                 </div>
                                 <div class="form-group">
                                     <label for="jk">Jenis Kelamin</label>
                                     <select class="custom-select" name="jk">
-                                        <option selected disabled></option>
-                                        <option>LAKI-LAKI</option>
-                                        <option>PEREMPUAN</option>
+                                        <option selected>{{$anggota[0]->jk}}</option>
+                                        <option value="LAKI-LAKI">LAKI-LAKI</option>
+                                        <option value="PEREMPUAN">PEREMPUAN</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Jurusan</label>
                                     <select class="custom-select" name="jurusan">
-                                        <option selected disabled>Pilih Jurusan</option>
-                                        <option>RPL</option>
-                                        <option>DPIB</option>
-                                        <option>TP</option>
-                                        <option>TFLM</option>
-                                        <option>TEI</option>
-                                        <option>TITL</option>
-                                        <option>TKJ</option>
+                                        <option selected>{{$anggota[0]->jurusan}}</option>
+                                        <option value="RPL">RPL</option>
+                                        <option value="DPIB">DPIB</option>
+                                        <option value="TP">TP</option>
+                                        <option value="TFLM">TFLM</option>
+                                        <option value="TEI">TEI</option>
+                                        <option value="TITL">TITL</option>
+                                        <option value="TKJ">TKJ</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -73,18 +74,23 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-phone"></i></span>
                                         </div>
-                                        <input type="number" class="form-control" name="tlp" data-inputmask='"mask": "(999) 999-9999"' data-mask placeholder="Masukan angka">
+                                        <input value="{{$anggota[0]->tlp}}" type="number" class="form-control" name="tlp" data-inputmask='"mask": "(999) 999-9999"' data-mask placeholder="Masukan angka">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label>Alamat</label>
-                                    <textarea class="form-control" rows="3" name="alamat" placeholder="Masukan alamat"></textarea>
+                                    <textarea class="form-control" rows="3" name="alamat" placeholder="Masukan alamat">{{$anggota[0]->alamat}}</textarea>
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-warning">Submit</button>
                             </div>
                             <!-- /.content -->
                         </form>
                     </div>
-                    @endsection
+                </div>
+            </div>
+        </div>
+    </div>
+
+@endsection
